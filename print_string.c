@@ -19,11 +19,8 @@ int print_string(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		print_char(s[i]);
-	}
-	if (print_char(s[i]) < 0)
-	{
-		return (-1);
+		if (print_char(s[i]) < 0)
+			return (-1);
 	}
 	return (length);
 }
