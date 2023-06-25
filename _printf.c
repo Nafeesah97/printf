@@ -2,7 +2,7 @@
 
 int _printf(const char *format, ...)
 {
-	int i, len;
+	int i, len = 0;
 	va_list var;
 
 	va_start(var, format);
@@ -17,33 +17,36 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				char ch = va_arg(var, int);
-				if (print_char(ch) < 0)
+				int c_printed = print_char(ch);
+
+				if (c_printed < 0)
 				{
 					len = -1;
 					break;
 				}
-				len += print_char(ch);
+				len += c_printed;
 			}
 			else if (format[i] == 's')
 			{
 				char *str = va_arg(var, char *);
-				int stlen = print_string(str);
+				int c_printed = print_string(str);
 
-				if (print_string(str) < 0)
+				if (c_printed < 0)
 				{
 					len = -1;
 					break;
 				}
-				len += stlen;
+				len += c_printed;
 			}
 			else if (format[i] == '%')
 			{
-				if (print_char('%') < 0)
+				int c_printed = print_char('%');
+				if (c_printed < 0)
 				{
 					len = -1;
 					break;
 				}
-				len += print_char('%');
+				len += c_printed;
 			}
 			else
 			{
@@ -52,7 +55,7 @@ int _printf(const char *format, ...)
 					len = -1;
 					break;
 				}
-				len += print_char(format[i]);
+				len += 1;
 			}
 		}
 		else
@@ -62,7 +65,7 @@ int _printf(const char *format, ...)
 				len = -1;
 				break;
 			}
-			len += print_char(format[i]);
+			len += 1;
 		}
 	}
 	va_end(var);
