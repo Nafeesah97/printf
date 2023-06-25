@@ -17,56 +17,52 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				char ch = va_arg(var, int);
-				print_char(ch);
 				if (print_char(ch) < 0)
 				{
 					len = -1;
 					break;
 				}
-				len++;
+				len += print_char(ch);
 			}
 			else if (format[i] == 's')
 			{
 				char *str = va_arg(var, char *);
-				int strlen = print_string(str);
+				int stlen = print_string(str);
 
-				print_string(str);
 				if (print_string(str) < 0)
 				{
 					len = -1;
 					break;
 				}
-				len += strlen;
+				len += stlen;
 			}
 			else if (format[i] == '%')
 			{
-				print_char('%');
 				if (print_char('%') < 0)
 				{
 					len = -1;
 					break;
 				}
-				len++;
+				len += print_char('%');
 			}
 			else
 			{
-				print_char(format[i]);
 				if (print_char(format[i]) < 0)
 				{
 					len = -1;
 					break;
 				}
-				len += 2;
+				len += print_char(format[i]);
 			}
+		}
 		else
 		{
-			print_char(format[i]);
 			if (print_char(format[i]) < 0)
 			{
 				len = -1;
 				break;
 			}
-			len++;
+			len += print_char(format[i]);
 		}
 	}
 	va_end(var);
