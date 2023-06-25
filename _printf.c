@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 					len = -1;
 					break;
 				}
-				len += print_char(format[i]);
+				len += 1;
 			}
 		}
 		else
@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 				len = -1;
 				break;
 			}
-			len += print_char(format[i]);
+			len += 1;
 		}
 	}
 	va_end(var);
