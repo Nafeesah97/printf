@@ -1,20 +1,29 @@
 #include "main.h"
-#include <unisted.h>
+#include <unistd.h>
+
+int print_char(char c)
+{
+	return (write(1, &c, 1));
+}
 
 int print_string(char *s)
 {
 	int i, length;
 
-	length = 1;
-	while (s != '\0')
+	length = 0;
+	while (*s != '\0')
 	{
 		length++;
 		s++;
 	}
 
-	for (i = 0; i < length; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 		print_char(s[i]);
 	}
-	return (0);
+	if (print_char(s[i]) < 0)
+	{
+		return (-1);
+	}
+	return (length);
 }
