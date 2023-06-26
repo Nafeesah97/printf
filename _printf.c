@@ -44,17 +44,7 @@ int _printf(const char *format, ...)
 				}
 				len += c_printed;
 			}
-			else if (format[i] == '%')
-			{
-				int c_printed = print_char('%');
-
-				if (c_printed < 0)
-				{
-					len = -1;
-					break;
-				}
-				len += c_printed;
-			}
+			
 			else
 			{
 				if (print_char(format[i]) < 0)
