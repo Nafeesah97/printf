@@ -19,7 +19,10 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == '\0')
+			{
+				return (-1);
 				break;
+			}
 			if (format[i] == 'c')
 			{
 				char ch = va_arg(var, int);
@@ -44,8 +47,28 @@ int _printf(const char *format, ...)
 				}
 				len += c_printed;
 			}
+			else if (format[i] == '%')
+			{
+				int c_printed = print_char('%');
+
+				if (c_printed < 0)
+				{
+					len = -1;
+					break;
+				}
+				len += 1;
+			}
 			else
 			{
+				int c_printed = print_char('%');
+
+				if (c_printed < 0)
+				{
+					len = -1;
+					break;
+				}
+				len += 1;
+
 				if (print_char(format[i]) < 0)
 				{
 					len = -1;
