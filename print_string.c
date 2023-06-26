@@ -35,6 +35,6 @@ int print_string(char *s)
 	{
 		print_char(s[i]);
 	}
-	
+
 	return (length);
 }
