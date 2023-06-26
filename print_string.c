@@ -33,14 +33,10 @@ int print_string(char *s)
 
 	for (i = 0; i < length; i++)
 	{
-<<<<<<< HEAD
 		print_char(s[i]);
 	}
-
-=======
 		if (print_char(s[i]) < 0)
 			return (-1);
 	}
->>>>>>> c63802878af3fec66385aa37553115213a03b0b3
 	return (length);
 }
