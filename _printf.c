@@ -44,7 +44,6 @@ int _printf(const char *format, ...)
 				}
 				len += c_printed;
 			}
-			
 			else
 			{
 				if (print_char(format[i]) < 0)
