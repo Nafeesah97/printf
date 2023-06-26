@@ -35,8 +35,6 @@ int print_string(char *s)
 	{
 		print_char(s[i]);
 	}
-		if (print_char(s[i]) < 0)
-			return (-1);
-	}
+	
 	return (length);
 }
