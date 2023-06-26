@@ -1,10 +1,23 @@
 #include "main.h"
 #include <unistd.h>
 
+/**
+ * print_char - Function that print a character
+ * @c: Character to be printed
+ * Return: Nothing
+ */
+
 int print_char(char c)
 {
 	return (write(1, &c, 1));
 }
+
+/**
+ * print_string - Function that prints a string
+ * @s: String to be printed
+ * Return: Length
+ */
+
 
 int print_string(char *s)
 {
@@ -16,14 +29,12 @@ int print_string(char *s)
 		length++;
 		s++;
 	}
+	s -= length;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; i < length; i++)
 	{
 		print_char(s[i]);
 	}
-	if (print_char(s[i]) < 0)
-	{
-		return (-1);
-	}
+
 	return (length);
 }
