@@ -1,5 +1,11 @@
 #include  "main.h"
 
+/**
+ * _printf - Printf function
+ * @format: Format of characters to be printed
+ * Return: printed chars
+ */
+
 int _printf(const char *format, ...)
 {
 	int i, len = 0;
@@ -41,6 +47,7 @@ int _printf(const char *format, ...)
 			else if (format[i] == '%')
 			{
 				int c_printed = print_char('%');
+
 				if (c_printed < 0)
 				{
 					len = -1;
