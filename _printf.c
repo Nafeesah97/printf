@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == '\0')
 			{
-				return (-1);
+				return (-1); 
 				break;
 			}
 			if (format[i] == 'c')
@@ -57,6 +57,19 @@ int _printf(const char *format, ...)
 					break;
 				}
 				len += 1;
+			}
+			else if (format[i] == 'd' || format[i] == 'i')
+                        {
+                                int num = va_arg(var, int);
+                                int digits = _digits(num);
+                                int d_printed = print_int(num, digits);
+
+                                if (d_printed < 0)
+                                {
+                                        va_end(var);
+                                        return (-1);
+                                }
+                                len += d_printed;
 			}
 			else
 			{

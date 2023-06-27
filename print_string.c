@@ -57,9 +57,8 @@ int _digits(int num)
 	return (count);
 }
 
-int print_int(int num, int (*digits)(int))
+int print_int(int num, int digits)
 {
-	digits() = &_digits;
 	int i, d = 1;
 	int p_int = 0;
 
@@ -69,11 +68,11 @@ int print_int(int num, int (*digits)(int))
 		num = -num;
 	}
 
-	for (i = 0; i < digits; i++)
+	for (i = 1; i < digits; i++)
 		d *= 10;
 
 	while (d != 0)
-	{
+u	{
 		int digit = num / d;
 		p_int += print_char('0' + digit);
 		num %= d;
