@@ -69,4 +69,15 @@ int print_int(int num, int (*digits)(int))
 		num = -num;
 	}
 
-	for (i = 0; i < digits)
+	for (i = 0; i < digits; i++)
+		d *= 10;
+
+	while (d != 0)
+	{
+		int digit = num / d;
+		p_int += print_char('0' + digit);
+		num %= d;
+		d /= 10;
+	}
+	return p_int;
+}
