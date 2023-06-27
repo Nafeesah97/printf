@@ -45,7 +45,7 @@ int _digits(int num)
 
 	count = 0;
 	if (num < 0)
-		count++;
+		num = -num;
 	if (num == 0)
 		return (1);
 
@@ -62,6 +62,12 @@ int print_int(int num, int digits)
 	int i, d = 1;
 	int p_int = 0;
 
+	if (num == 0)
+	{
+		p_int += print_char('0');
+		return (p_int);
+	}
+
 	if (num < 0)
 	{
 		p_int += print_char('-');
@@ -72,11 +78,11 @@ int print_int(int num, int digits)
 		d *= 10;
 
 	while (d != 0)
-u	{
+	{
 		int digit = num / d;
 		p_int += print_char('0' + digit);
 		num %= d;
 		d /= 10;
 	}
-	return p_int;
+	return (p_int);
 }
