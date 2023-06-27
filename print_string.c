@@ -39,6 +39,12 @@ int print_string(char *s)
 	return (length);
 }
 
+/**
+ * _digits - Function to count number of digits
+ * @num: number to be counted
+ * Return: Count
+ */
+
 int _digits(int num)
 {
 	int count;
@@ -56,6 +62,12 @@ int _digits(int num)
 	}
 	return (count);
 }
+/**
+ * print_int - Function to print integer
+ * @num: integer to be printed
+ * @digits: digits to be printed
+ * Return: Printed integer
+ */
 
 int print_int(int num, int digits)
 {
@@ -80,6 +92,7 @@ int print_int(int num, int digits)
 	while (d != 0)
 	{
 		int digit = num / d;
+
 		p_int += print_char('0' + digit);
 		num %= d;
 		d /= 10;
