@@ -38,3 +38,35 @@ int print_string(char *s)
 
 	return (length);
 }
+
+int _digits(int num)
+{
+	int count;
+
+	count = 0;
+	if (num < 0)
+		count++;
+	if (num == 0)
+		return (1);
+
+	while (num != 0)
+	{
+		count++;
+		num /= 10;
+	}
+	return (count);
+}
+
+int print_int(int num, int (*digits)(int))
+{
+	digits() = &_digits;
+	int i, d = 1;
+	int p_int = 0;
+
+	if (num < 0)
+	{
+		p_int += print_char('-');
+		num = -num;
+	}
+
+	for (i = 0; i < digits)
