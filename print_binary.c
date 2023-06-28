@@ -10,7 +10,7 @@ int _lenb(unsigned int num)
 	if (num == 0)
 		return (1);
 
-	while (num % 2 >= 0)
+	while (num > 0)
 	{
 		len++;
 		num /= 2;
@@ -32,7 +32,10 @@ int print_bin(unsigned int num)
 	}
 	
 	bin = malloc(sizeof(unsigned int) * l);
-	i = 0;
+	if (bin == NULL)
+		return (-1);
+	i =0;
+
 	while (num > 0)
 	
 	{
@@ -42,7 +45,13 @@ int print_bin(unsigned int num)
 
 	for (i = i - 1; i >= 0; i--)
 	{
-		return (print_char('0' + bin[i]));
+		if (print_char('0' + bin[i]) < 0)
+		{
+			free(bin);
+			return (-1);
+		}
 	}
 	free(bin);
+	return (l);
 }
+
