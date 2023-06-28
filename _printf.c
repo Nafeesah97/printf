@@ -59,17 +59,29 @@ int _printf(const char *format, ...)
 				len += 1;
 			}
 			else if (format[i] == 'd' || format[i] == 'i')
-                        {
-                                int num = va_arg(var, int);
-                                int digits = _digits(num);
-                                int d_printed = print_int(num, digits);
+			{
+				int num = va_arg(var, int);
+				int digits = _digits(num);
+				int d_printed = print_int(num, digits);
 
-                                if (d_printed < 0)
-                                {
-                                        va_end(var);
-                                        return (-1);
-                                }
-                                len += d_printed;
+				if (d_printed < 0)
+				{
+					len = -1;
+					break;
+				}
+				len += d_printed;
+			}
+			else if (format[i] == 'b')
+			{
+				int bin = va_arg(var, int);
+				int c_printed = print_bin(bin);
+
+				if (c_printed < 0)
+				{
+					len = -1;
+					break;
+				}
+				len += c_printed;
 			}
 			else
 			{
